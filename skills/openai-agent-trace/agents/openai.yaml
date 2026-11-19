@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenAI Agent Trace"
+  short_description: "Instrument and audit observable OpenAI agent runs"
+  default_prompt: "Use $openai-agent-trace to add or audit tracing for this OpenAI API agent without changing its execution policy."

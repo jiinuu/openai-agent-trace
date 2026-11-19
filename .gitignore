@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+outputs/
+debug-trace/
+*.jsonl
+LOCAL_SUMMARY.json
+LOCAL_SPAN.json
+RESPONSE.json
+RECONSTRUCTED_TRACE.json

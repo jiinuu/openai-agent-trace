@@ -1,0 +1,32 @@
+{
+  "http_response": {"status_code": 200, "headers": {"x-request-id": "req_fixture_001"}},
+  "response": {
+    "id": "resp_fixture_001",
+    "model": "fixture-model",
+    "status": "completed",
+    "reasoning": {"effort": "low", "summary": "auto"},
+    "tools": [{"type": "function", "name": "check_submission"}],
+    "output": [
+      {
+        "type": "reasoning",
+        "id": "rs_fixture_001",
+        "summary": [{"type": "summary_text", "text": "The synthetic example checks an output format."}]
+      },
+      {
+        "type": "function_call",
+        "id": "fc_fixture_001",
+        "call_id": "call_fixture_001",
+        "name": "check_submission",
+        "status": "completed",
+        "arguments": "{\"fixture\":\"demo.csv\"}"
+      }
+    ],
+    "usage": {
+      "input_tokens": 12,
+      "input_tokens_details": {"cached_tokens": 0},
+      "output_tokens": 8,
+      "output_tokens_details": {"reasoning_tokens": 3},
+      "total_tokens": 20
+    }
+  }
+}
