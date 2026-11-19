@@ -10,7 +10,7 @@ A Codex skill for adding and auditing observable traces in existing OpenAI API a
 
 Ask `$skill-installer` to install `skills/openai-agent-trace` from `jiinuu/openai-agent-trace`. In the project you want to instrument, start with:
 
-> Use $openai-agent-trace to trace the existing model calls and actual tool executions. Keep the existing run policy and verify with a fixture first.
+> Use $openai-agent-trace to make new Responses calls visible in OpenAI Platform Logs. Verify response storage and returned reasoning summaries with one non-sensitive input.
 
 For other coding agents, start at [SKILL.md](skills/openai-agent-trace/SKILL.md).
 

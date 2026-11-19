@@ -42,10 +42,14 @@ class ResponseTests(unittest.TestCase):
     def test_no_summary_or_usage_does_not_guess(self):
         response = self.raw["response"]
         response.pop("usage")
+        response["store"] = True
+        response["reasoning"]["summary"] = "auto"
         response["output"] = [{"type": "reasoning", "summary": [
             {"type": "reasoning_text", "text": "not a summary"}, {"type": "summary_text", "text": " "}
         ]}]
         report, summary = inspect_response(response)
+        self.assertIs(report["store"], True)
+        self.assertEqual(report["reported_reasoning_summary"], "auto")
         self.assertEqual(report["summary_status"], "not_returned")
         self.assertIsNone(report["usage"]["total_tokens"])
         self.assertIsNone(report["request_id"])

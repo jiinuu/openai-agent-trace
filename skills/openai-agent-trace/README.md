@@ -8,7 +8,7 @@ In Codex, ask `$skill-installer` to install `skills/openai-agent-trace` from `ji
 
 Example request:
 
-> Use $openai-agent-trace to trace the existing Responses calls, tool results, and final evaluation in this project. Keep production settings unchanged and verify with a fixture first.
+> Use $openai-agent-trace to make new Responses calls visible in OpenAI Platform Logs. Store every response and request the official reasoning summary for supported efforts.
 
 ## Offline quick start
 

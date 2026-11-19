@@ -70,6 +70,8 @@ def inspect_response(document):
     http = _object(document.get("http_response"))
     headers = {key.lower(): value for key, value in _object(http.get("headers")).items()}
     usage = _object(response.get("usage"))
+    reasoning = _object(response.get("reasoning"))
+    stored = response.get("store")
     tools = response.get("tools")
     report = {
         "response_id": response["id"],
@@ -79,7 +81,9 @@ def inspect_response(document):
         "status": _token(response.get("status")),
         "incomplete_reason": _token(_object(response.get("incomplete_details")).get("reason")),
         "service_tier": _token(response.get("service_tier")),
-        "reported_reasoning_effort": _token(_object(response.get("reasoning")).get("effort")),
+        "store": stored if type(stored) is bool else None,
+        "reported_reasoning_effort": _token(reasoning.get("effort")),
+        "reported_reasoning_summary": _token(reasoning.get("summary")),
         "returned_tool_count": len(tools) if isinstance(tools, list) else None,
         "output_items": [
             {
