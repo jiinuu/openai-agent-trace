@@ -125,8 +125,12 @@ def audit(path):
     missing_bodies = [r["event_id"] for r in requests + responses if r["event_id"] not in body_ids]
     if missing_bodies:
         errors.append({"code": "missing_model_body", "count": len(missing_bodies)})
-    execution_ids = {row.get("operation_id") for row in load_jsonl(Path(path).with_name("execution-io.jsonl"))
-                     if all(key in row.get("parts", {}) for key in ("code", "stdout", "stderr"))}
+    execution_parts = {}
+    for row in load_jsonl(Path(path).with_name("execution-io.jsonl")):
+        if row.get("operation_id"):
+            execution_parts.setdefault(row["operation_id"], {}).update(row.get("parts", {}))
+    execution_ids = {operation for operation, parts in execution_parts.items()
+                     if all(key in parts for key in ("code", "stdout", "stderr"))}
     executions = [row for row in rows.values() if row.get("kind") == "span_start" and
                   row.get("operation") in {"python_execution", "tool_execution"} and row["event_id"] in ended]
     missing_executions = sum(row["event_id"] not in execution_ids for row in executions)

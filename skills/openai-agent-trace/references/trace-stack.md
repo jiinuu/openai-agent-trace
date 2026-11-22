@@ -48,6 +48,10 @@ The fixture records fixed model outputs and executes two harmless Python process
 
 ## Instrument the current loop
 
+Validate telemetry flags through the outermost launcher as well as the inner runner with an existing `--prepare-only`/fixture path before paying for a model call. Isolation wrappers must accept and forward the same explicit trace settings; a parser failure before the API is a preparation failure, not a model trial. Preserve it and resume only the missing actual execution. Keep completed results unchanged and document source-version changes before resuming.
+
+When both native journals and reconstructed archives exist, bind the dashboard/exporters to the native journal first. Keep native and reconstructed SDK trace ID namespaces distinct. Code may be appended at execution start and stdout/stderr at completion; merge these records by operation ID before declaring a missing body. Empty output is a present empty string. If a real run never enters Python debugging, label that branch not exercised; a controller rejecting an empty code response is a separate type of feedback.
+
 Import the runtime from the installed skill's `scripts` directory using the project's existing dependency/module convention. Keep the existing API parameters, model, effort/mode, dispatch, limits and evaluation. Attach HTTP hooks at the existing `OpenAI(...)` client, rather than creating a second client call.
 
 ```python

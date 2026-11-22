@@ -109,6 +109,16 @@ class RuntimeTests(unittest.TestCase):
                            "response_id": "resp_fixture", "call_id": "C:/Users/private"})
         self.assertEqual(fields, {"agent.event_id": "run/attempt/event-1", "agent.response_id": "resp_fixture"})
 
+    def test_execution_parts_can_arrive_in_separate_append_only_records(self):
+        with self.trace.span("python_execution", call_id="call-01") as (operation, outcome):
+            self.trace.execution_io(operation, code="print(1)")
+            self.trace.execution_io(operation, stdout="1\n", stderr="")
+            outcome["status"] = "passed"
+        self.trace.finish("passed")
+        report, _ = audit(self.path)
+        self.assertEqual(report["missing_execution_io"], 0)
+        self.assertEqual(report["errors"], [])
+
     def test_sse_receipts_and_missing_sequence_are_checked(self):
         class Stream:
             response = SimpleNamespace(headers={"x-request-id": "req_fixture"})
