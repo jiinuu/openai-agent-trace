@@ -1,4 +1,4 @@
 interface:
   display_name: "OpenAI Agent Trace"
-  short_description: "Instrument and audit observable OpenAI agent runs"
-  default_prompt: "Use $openai-agent-trace to add or audit tracing for this OpenAI API agent without changing its execution policy."
+  short_description: "Capture, connect, verify, and read agent traces"
+  default_prompt: "Use $openai-agent-trace to connect and verify this agent's selected trace collectors and readable dashboard while preserving its execution policy."
