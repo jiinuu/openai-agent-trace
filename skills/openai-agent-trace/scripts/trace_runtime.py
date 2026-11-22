@@ -369,4 +369,3 @@ def call_responses(client, trace, call_id, *, raw=False, stream=False, platform_
         raise
     finally:
         _active_call.reset(token)
-

@@ -278,4 +278,3 @@ def project_agents(traces, project, api_key):
     finally:
         exporter._client.close()
     return {"status": "acknowledged", "accepted": accepted, "trace_ids": links}
-
